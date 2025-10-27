@@ -1,0 +1,2 @@
+/usr/bin/ar qc librrc_nr_asn1.a CMakeFiles/rrc_nr_asn1.dir/rrc_nr.cc.o CMakeFiles/rrc_nr_asn1.dir/rrc_nr_utils.cc.o CMakeFiles/rrc_nr_asn1.dir/Modulized_HIBFSS_Schnorr2.cpp.o CMakeFiles/rrc_nr_asn1.dir/Dilithium.cpp.o CMakeFiles/rrc_nr_asn1.dir/CKG.cpp.o CMakeFiles/rrc_nr_asn1.dir/UE_T_BORG.cpp.o CMakeFiles/rrc_nr_asn1.dir/UE_EC_SCHNORR.cpp.o CMakeFiles/rrc_nr_asn1.dir/crypto_utils.cpp.o CMakeFiles/rrc_nr_asn1.dir/UE_HIBS.cpp.o CMakeFiles/rrc_nr_asn1.dir/UE_ECDSA.cpp.o
+/usr/bin/ranlib librrc_nr_asn1.a

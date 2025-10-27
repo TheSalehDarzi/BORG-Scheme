@@ -1,0 +1,151 @@
+Performing C++ SOURCE FILE Test UHD_ENABLE_X300_FW_RESET failed with the following output:
+Change Dir: /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e62bf/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e62bf.dir/build.make CMakeFiles/cmTC_e62bf.dir/build
+gmake[1]: Entering directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e62bf.dir/src.cxx.o
+/usr/bin/c++ -DUHD_ENABLE_X300_FW_RESET  -L/usr/lib/x86_64-linux-gnu -o CMakeFiles/cmTC_e62bf.dir/src.cxx.o -c /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_e62bf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e62bf.dir/link.txt --verbose=1
+/usr/bin/c++   -L/usr/lib/x86_64-linux-gnu CMakeFiles/cmTC_e62bf.dir/src.cxx.o -o cmTC_e62bf  -luhd -lboost_program_options -lboost_system 
+/usr/bin/ld: CMakeFiles/cmTC_e62bf.dir/src.cxx.o: in function `try_usrp_x300_reset()':
+src.cxx:(.text+0xea): undefined reference to `x300_make_ctrl_iface_enet(std::shared_ptr<uhd::transport::udp_simple>, bool)'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_e62bf.dir/build.make:99: cmTC_e62bf] Error 1
+gmake[1]: Leaving directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_e62bf/fast] Error 2
+
+
+Source file was:
+#include <uhd.h>
+    #include <uhd/usrp/multi_usrp.hpp>
+    #include <uhd/transport/udp_simple.hpp>
+
+    uhd::wb_iface::sptr x300_make_ctrl_iface_enet(uhd::transport::udp_simple::sptr udp, bool enable_errors);
+
+    uhd_error try_usrp_x300_reset()
+    {
+      uhd::transport::udp_simple::sptr udp_simple = uhd::transport::udp_simple::make_connected("", "49152");
+      uhd::wb_iface::sptr x300_ctrl = x300_make_ctrl_iface_enet(udp_simple, true);
+      x300_ctrl->poke32(0x100058, 1);
+      return UHD_ERROR_NONE;
+    }
+
+    int main(int argc, char** argv)
+    {
+      try_usrp_x300_reset();
+      return 0;
+    }
+Performing C++ SOURCE FILE Test UHD_ENABLE_RFNOC failed with the following output:
+Change Dir: /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_d3d32/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d3d32.dir/build.make CMakeFiles/cmTC_d3d32.dir/build
+gmake[1]: Entering directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d3d32.dir/src.cxx.o
+/usr/bin/c++ -DUHD_ENABLE_RFNOC  -L/usr/lib/x86_64-linux-gnu -o CMakeFiles/cmTC_d3d32.dir/src.cxx.o -c /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp/src.cxx
+/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp/src.cxx:2:14: fatal error: uhd/device3.hpp: No such file or directory
+    2 |     #include <uhd/device3.hpp>
+      |              ^~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_d3d32.dir/build.make:78: CMakeFiles/cmTC_d3d32.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_d3d32/fast] Error 2
+
+
+Source file was:
+#include <uhd.h>
+    #include <uhd/device3.hpp>
+    #include <uhd/rfnoc/ddc_block_ctrl.hpp>
+    #include <uhd/rfnoc/radio_ctrl.hpp>
+
+    static uhd::device3::sptr device3;
+    static uhd::rfnoc::ddc_block_ctrl::sptr ddc_ctrl;
+    static uhd::rfnoc::radio_ctrl::sptr radio_ctrl;
+
+    uhd_error try_device3_ddc_ctrl()
+    {
+      ddc_ctrl = device3->get_block_ctrl<uhd::rfnoc::ddc_block_ctrl>(uhd::rfnoc::block_id_t("DDC_0"));
+      return UHD_ERROR_NONE;
+    }
+
+    uhd_error try_device3_radio_ctrl()
+    {
+      radio_ctrl = device3->get_block_ctrl<uhd::rfnoc::radio_ctrl>(uhd::rfnoc::block_id_t("Radio_0"));
+      return UHD_ERROR_NONE;
+    }
+
+    int main(int argc, char** argv)
+    {
+      try_device3_ddc_ctrl();
+      try_device3_radio_ctrl();
+      return 0;
+    }
+Performing C++ SOURCE FILE Test UHD_ENABLE_CUSTOM_RFNOC failed with the following output:
+Change Dir: /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_425b4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_425b4.dir/build.make CMakeFiles/cmTC_425b4.dir/build
+gmake[1]: Entering directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_425b4.dir/src.cxx.o
+/usr/bin/c++ -DUHD_ENABLE_CUSTOM_RFNOC  -L/usr/lib/x86_64-linux-gnu -o CMakeFiles/cmTC_425b4.dir/src.cxx.o -c /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp/src.cxx
+/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp/src.cxx:2:14: fatal error: uhd/device3.hpp: No such file or directory
+    2 |     #include <uhd/device3.hpp>
+      |              ^~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_425b4.dir/build.make:78: CMakeFiles/cmTC_425b4.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_425b4/fast] Error 2
+
+
+Source file was:
+#include <uhd.h>
+    #include <uhd/device3.hpp>
+    #include <uhd/rfnoc/ddc_ch2_block_ctrl.hpp>
+
+    static uhd::device3::sptr device3;
+    static uhd::rfnoc::ddc_ch2_block_ctrl::sptr ddc_ctrl;
+
+    uhd_error try_device3_ddc_ch2_ctrl()
+    {
+      ddc_ctrl = device3->get_block_ctrl<uhd::rfnoc::ddc_ch2_block_ctrl>(uhd::rfnoc::block_id_t("DDCch2_0"));
+      return UHD_ERROR_NONE;
+    }
+
+    int main(int argc, char** argv)
+    {
+      try_device3_ddc_ch2_ctrl();
+      return 0;
+    }
+Performing C SOURCE FILE Test HAVE_AVX512 failed with the following output:
+Change Dir: /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8685f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8685f.dir/build.make CMakeFiles/cmTC_8685f.dir/build
+gmake[1]: Entering directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8685f.dir/src.c.o
+/usr/bin/cc   -DHAVE_AVX512 -mavx512f -mavx512cd -mavx512bw -mavx512dq -DLV_HAVE_AVX512 -o CMakeFiles/cmTC_8685f.dir/src.c.o -c /home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8685f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8685f.dir/link.txt --verbose=1
+/usr/bin/cc  -DHAVE_AVX512 -mavx512f -mavx512cd -mavx512bw -mavx512dq -DLV_HAVE_AVX512 CMakeFiles/cmTC_8685f.dir/src.c.o -o cmTC_8685f 
+gmake[1]: Leaving directory '/home/masfiqur/5G_cryptobs/srsRAN_4G/build/CMakeFiles/CMakeTmp'
+
+
+Return value: FAILED_TO_RUN
+Source file was:
+
+          #include <immintrin.h>
+          int main()
+          {
+            __m512i a, b, c;
+            const int src[16] = { 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8 , 0x9, 0xA, 0xB, 0xC, 0xD, 0xE, 0xF};
+            int dst[16];
+            a =  _mm512_loadu_si512( (__m512i*)src );
+            b =  _mm512_loadu_si512( (__m512i*)src );
+            c = _mm512_add_epi32( a, b );
+            _mm512_storeu_si512( (__m512i*)dst, c );
+            int i = 0;
+            for( i = 0; i < 16; i++ ){
+              if( ( src[i] + src[i] ) != dst[i] ){
+                return -1;
+              }
+            }
+            return 0;
+          }

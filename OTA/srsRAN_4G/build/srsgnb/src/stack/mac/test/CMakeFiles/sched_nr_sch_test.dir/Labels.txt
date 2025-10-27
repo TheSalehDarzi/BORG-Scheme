@@ -1,0 +1,5 @@
+# Directory labels
+ sched
+ nr
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_4G/srsgnb/src/stack/mac/test/sched_nr_sch_test.cc

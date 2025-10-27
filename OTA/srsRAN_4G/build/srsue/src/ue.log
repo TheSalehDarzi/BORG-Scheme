@@ -1,0 +1,69 @@
+2025-06-05T13:42:40.759505 [UE     ] [I] Using binary ./srsue with arguments: ue_rf.conf 
+2025-06-05T13:42:40.810840 [UE     ] [I] Built in Release mode using commit ec29b0c1f on branch master.
+2025-06-05T13:42:40.879903 [RF     ] [I] Configuring physical DL channel 0 with band-pass filter (0.0, 0.0)
+2025-06-05T13:42:40.879904 [RF     ] [I] Configuring physical UL channel 0 with band-pass filter (0.0, 0.0)
+2025-06-05T13:42:42.612714 [STCK   ] [I] Open nas pcap file ./ue_nas.pcap
+2025-06-05T13:42:42.621237 [MAC    ] [I] [    0] Resetting MAC
+2025-06-05T13:42:42.621241 [MAC    ] [I] [    0] Logical Channel Setup: LCID=0, LCG=0, priority=0, PBR=-1, BSD=50ms, bucket_size=0
+2025-06-05T13:42:42.621243 [MAC    ] [I] [    0] Logical Channel Setup: LCID=1, LCG=0, priority=1, PBR=-1, BSD=50ms, bucket_size=0
+2025-06-05T13:42:42.621248 [MAC    ] [I] [    0] Setting configuration
+2025-06-05T13:42:42.621248 [MAC    ] [I] [    0] BSR:   Configured timer reTX 2560 ms
+2025-06-05T13:42:42.621253 [RLC    ] [I] Added LTE radio bearer with LCID 0 in Transparent Mode
+2025-06-05T13:42:42.621259 [USIM   ] [I] Read Home PLMN Id=00101
+2025-06-05T13:42:42.624542 [RLC-NR ] [I] Added LTE radio bearer with LCID 0 in Transparent Mode
+2025-06-05T13:42:42.624545 [MAC-NR ] [I] [    0] Logical Channel Setup: LCID=0, LCG=0, priority=0, PBR=0, BSD=0ms, bucket_size=0
+2025-06-05T13:42:42.624550 [RRC    ] [I] using srand seed of 624550
+2025-06-05T13:42:42.668111 [STCK   ] [I] Triggering NAS switch on
+2025-06-05T13:42:42.668140 [NAS5G  ] [I] Switching on
+2025-06-05T13:42:42.718379 [USIM   ] [I] Read Home PLMN Id=00101
+2025-06-05T13:42:42.718379 [NAS5G  ] [I] Requesting IMSI attach (IMSI=001010123456780)
+2025-06-05T13:42:42.718386 [NAS5G  ] [I] Sending Registration Request
+2025-06-05T13:42:42.718387 [RRC-NR ] [I] Proc "Setup Request" - Initiation of Setup request procedure
+2025-06-05T13:42:42.718388 [RRC-NR ] [I] Proc "Cell Selection" - Starting...
+2025-06-05T13:42:42.718398 [PHY-SA ] [I] [    0] Cell Search: Going to IDLE
+2025-06-05T13:42:42.718400 [PHY-SA ] [I] [    0] Tuning Rx channel 0 to 1842.50 MHz
+2025-06-05T13:42:42.718404 [RF     ] [I] Mapping RF channel 0 (device=0, channel=0) to logical carrier 0 on f_rx=1842.5 MHz
+2025-06-05T13:42:42.891435 [PHY-SA ] [I] [    0] Cell search: Setting SSB configuration srate=23.04 MHz; c-freq=1842.500 MHz; ss-freq=1842.050 MHz; scs=15kHz; pattern=A; duplex=fdd;
+2025-06-05T13:42:42.891823 [PHY-SA ] [I] [    0] Cell Search: Running Cell search state
+2025-06-05T13:42:42.909550 [RF     ] [I] Overflow
+2025-06-05T13:42:42.923899 [RF     ] [I] Overflow
+2025-06-05T13:42:42.938212 [RF     ] [I] Overflow
+2025-06-05T13:42:42.952532 [RF     ] [I] Overflow
+2025-06-05T13:42:42.966868 [RF     ] [I] Overflow
+2025-06-05T13:42:42.981148 [RF     ] [I] Overflow
+2025-06-05T13:42:42.995467 [RF     ] [I] Overflow
+2025-06-05T13:42:43.010058 [RF     ] [I] Overflow
+2025-06-05T13:42:43.024352 [RF     ] [I] Overflow
+2025-06-05T13:42:43.038619 [RF     ] [I] Overflow
+2025-06-05T13:42:43.053002 [RF     ] [I] Overflow
+2025-06-05T13:42:43.067300 [RF     ] [I] Overflow
+2025-06-05T13:42:43.081619 [RF     ] [I] Overflow
+2025-06-05T13:42:43.096119 [RF     ] [I] Overflow
+2025-06-05T13:42:43.110351 [RF     ] [I] Overflow
+2025-06-05T13:42:43.124579 [RF     ] [I] Overflow
+2025-06-05T13:42:43.138922 [RF     ] [I] Overflow
+2025-06-05T13:42:43.153191 [RF     ] [I] Overflow
+2025-06-05T13:42:43.167392 [RF     ] [I] Overflow
+2025-06-05T13:42:43.181716 [RF     ] [I] Overflow
+2025-06-05T13:42:43.196081 [RF     ] [I] Overflow
+2025-06-05T13:42:43.210335 [RF     ] [I] Overflow
+2025-06-05T13:42:43.224591 [RF     ] [I] Overflow
+2025-06-05T13:42:43.238816 [RF     ] [I] Overflow
+2025-06-05T13:42:43.251965 [RRC-NR ] [I] Proc "Cell Selection" - Completed with failure.
+2025-06-05T13:42:43.251972 [RRC-NR ] [W] Could not finish setup request. Deallocating dedicatedInfoNAS PDU
+2025-06-05T13:42:43.253095 [RF     ] [I] Overflow
+2025-06-05T13:42:43.724272 [MAC    ] [I] [    0] BSR:   triggered_bsr_type=none, LCID QUEUE status: 0: 0 1: 0 
+2025-06-05T13:42:44.002305 [STCK   ] [I] tti_tprof: {mean, max, min} = {0.00, 0, 0} msec
+2025-06-05T13:42:44.723279 [MAC    ] [I] [    0] BSR:   triggered_bsr_type=none, LCID QUEUE status: 0: 0 1: 0 
+2025-06-05T13:42:45.026265 [STCK   ] [I] tti_tprof: {mean, max, min} = {0.00, 0, 0} msec
+2025-06-05T13:42:45.722244 [MAC    ] [I] [    0] BSR:   triggered_bsr_type=none, LCID QUEUE status: 0: 0 1: 0 
+2025-06-05T13:42:46.050253 [STCK   ] [I] tti_tprof: {mean, max, min} = {0.00, 0, 0} msec
+2025-06-05T13:42:46.721199 [MAC    ] [I] [    0] BSR:   triggered_bsr_type=none, LCID QUEUE status: 0: 0 1: 0 
+2025-06-05T13:42:47.074238 [STCK   ] [I] tti_tprof: {mean, max, min} = {0.00, 0, 0} msec
+2025-06-05T13:42:47.720203 [MAC    ] [I] [    0] BSR:   triggered_bsr_type=none, LCID QUEUE status: 0: 0 1: 0 
+2025-06-05T13:42:48.098296 [STCK   ] [I] tti_tprof: {mean, max, min} = {0.00, 0, 0} msec
+2025-06-05T13:42:48.719236 [MAC    ] [I] [    0] BSR:   triggered_bsr_type=none, LCID QUEUE status: 0: 0 1: 0 
+2025-06-05T13:42:49.122270 [STCK   ] [I] tti_tprof: {mean, max, min} = {0.00, 0, 0} msec
+2025-06-05T13:42:49.718249 [MAC    ] [I] [    0] BSR:   triggered_bsr_type=none, LCID QUEUE status: 0: 0 1: 0 
+2025-06-05T13:42:49.967756 [NAS    ] [I] Switching off
+2025-06-05T13:42:50.146208 [STCK   ] [I] tti_tprof: {mean, max, min} = {0.00, 0, 0} msec
