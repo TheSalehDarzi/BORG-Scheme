@@ -92,9 +92,10 @@ BORG/
 │   ├── verifier/         # Verification and Proof-of-Forgery
 │   └── audit/            # PQ Threshold audit logging
 │
-├── testbed_5g/           # Integration with srsRAN + open5GS
-│   ├── scripts/          # Deployment and orchestration
-│   └── analysis/         # Timing and throughput evaluation
+├── OTA/                  # Over-The-Air Integration (srsRAN + open5GS) for BORG
+│   ├── srsRAN_4G/        # UE integration
+│   └── srsRAN_Project/   # gNB and Core integration
+|   └── README.md         # OTA installation and running instructions
 │
 ├── docs/
 │   ├── diagrams/         # Protocol and message flow figures
