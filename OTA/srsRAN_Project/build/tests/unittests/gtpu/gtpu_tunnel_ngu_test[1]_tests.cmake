@@ -1,0 +1,7 @@
+add_test( gtpu_tunnel_ngu_test.entity_creation /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu/gtpu_tunnel_ngu_test [==[--gtest_filter=gtpu_tunnel_ngu_test.entity_creation]==] --gtest_also_run_disabled_tests)
+set_tests_properties( gtpu_tunnel_ngu_test.entity_creation PROPERTIES WORKING_DIRECTORY /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test( gtpu_tunnel_ngu_test.rx_sdu /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu/gtpu_tunnel_ngu_test [==[--gtest_filter=gtpu_tunnel_ngu_test.rx_sdu]==] --gtest_also_run_disabled_tests)
+set_tests_properties( gtpu_tunnel_ngu_test.rx_sdu PROPERTIES WORKING_DIRECTORY /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test( gtpu_tunnel_ngu_test.tx_pdu /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu/gtpu_tunnel_ngu_test [==[--gtest_filter=gtpu_tunnel_ngu_test.tx_pdu]==] --gtest_also_run_disabled_tests)
+set_tests_properties( gtpu_tunnel_ngu_test.tx_pdu PROPERTIES WORKING_DIRECTORY /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set( gtpu_tunnel_ngu_test_TESTS gtpu_tunnel_ngu_test.entity_creation gtpu_tunnel_ngu_test.rx_sdu gtpu_tunnel_ngu_test.tx_pdu)

@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/scheduler/uci_and_pucch/uci_pucch_sched_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/scheduler/uci_and_pucch/uci_pucch_sched_test[1]_tests.cmake")
+else()
+  add_test(uci_pucch_sched_test_NOT_BUILT uci_pucch_sched_test_NOT_BUILT)
+endif()

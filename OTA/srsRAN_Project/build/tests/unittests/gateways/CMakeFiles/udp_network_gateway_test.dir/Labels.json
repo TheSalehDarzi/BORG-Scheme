@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/gateways/udp_network_gateway_test.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"gateways"
+		],
+		"name" : "udp_network_gateway_test"
+	}
+}

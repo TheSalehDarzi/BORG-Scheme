@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/scheduler/multiple_ue_sched_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/scheduler/multiple_ue_sched_test[1]_tests.cmake")
+else()
+  add_test(multiple_ue_sched_test_NOT_BUILT multiple_ue_sched_test_NOT_BUILT)
+endif()

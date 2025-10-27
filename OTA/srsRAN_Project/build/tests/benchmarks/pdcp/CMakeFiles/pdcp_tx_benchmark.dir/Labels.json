@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/benchmarks/pdcp/pdcp_tx_benchmark.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pdcp"
+		],
+		"name" : "pdcp_tx_benchmark"
+	}
+}

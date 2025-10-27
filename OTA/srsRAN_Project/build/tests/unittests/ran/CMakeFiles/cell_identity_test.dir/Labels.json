@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/ran/cell_identity_test.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"ran"
+		],
+		"name" : "cell_identity_test"
+	}
+}

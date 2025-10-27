@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/du_manager/du_manager_procedure_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/du_manager/du_manager_procedure_test[1]_tests.cmake")
+else()
+  add_test(du_manager_procedure_test_NOT_BUILT du_manager_procedure_test_NOT_BUILT)
+endif()

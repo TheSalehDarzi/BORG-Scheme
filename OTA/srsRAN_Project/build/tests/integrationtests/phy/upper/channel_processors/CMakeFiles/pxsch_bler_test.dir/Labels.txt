@@ -1,0 +1,8 @@
+# Directory labels
+ phy
+ tsan
+ NO_MEMCHECK
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/integrationtests/phy/upper/channel_processors/pxsch_bler_test.cpp
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/integrationtests/phy/upper/channel_processors/pxsch_bler_test_channel_emulator.cpp
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/integrationtests/phy/upper/channel_processors/pxsch_bler_test_factories.cpp

@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/scheduler/support/pusch/pusch_dmrs_symbol_mask_test.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"sched"
+		],
+		"name" : "pusch_dmrs_symbol_mask_test"
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/scheduler/test_utils/config_generators.cpp"
+		},
+		{
+			"file" : "/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/scheduler/test_utils/indication_generators.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"sched"
+		],
+		"name" : "scheduler_test_utils"
+	}
+}

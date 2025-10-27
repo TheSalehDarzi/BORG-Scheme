@@ -1,0 +1,16 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/gtpu/gtpu_test_allocator.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"gtpu"
+		],
+		"name" : "gtpu_alloc_test"
+	}
+}

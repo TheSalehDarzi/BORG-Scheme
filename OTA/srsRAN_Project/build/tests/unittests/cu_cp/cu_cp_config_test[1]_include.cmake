@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/cu_cp/cu_cp_config_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/cu_cp/cu_cp_config_test[1]_tests.cmake")
+else()
+  add_test(cu_cp_config_test_NOT_BUILT cu_cp_config_test_NOT_BUILT)
+endif()

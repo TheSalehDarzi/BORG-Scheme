@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/phy/support/resource_grid_mapper_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/phy/support/resource_grid_mapper_test[1]_tests.cmake")
+else()
+  add_test(resource_grid_mapper_test_NOT_BUILT resource_grid_mapper_test_NOT_BUILT)
+endif()

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrsran_radio_uhd.a CMakeFiles/srsran_radio_uhd.dir/radio_config_uhd_validator.cpp.o CMakeFiles/srsran_radio_uhd.dir/radio_uhd_impl.cpp.o CMakeFiles/srsran_radio_uhd.dir/radio_uhd_rx_stream.cpp.o CMakeFiles/srsran_radio_uhd.dir/radio_uhd_tx_stream.cpp.o
+/usr/bin/ranlib libsrsran_radio_uhd.a

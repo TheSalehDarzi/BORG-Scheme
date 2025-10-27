@@ -1,0 +1,81 @@
+// 
+// 
+/**************************************
+ *          HIBFSS Algorithm            *
+ **************************************
+ *Description:      1. HIBFSS.Setup()
+ *                  2. HIBFSS.KeyExtract()
+ *                  3. HIBFSS.Sign()
+ *                  4. HIBFSS.MVerify()
+ * 
+ *
+ *Compile:          gcc Modulized_HIBFSS_Schnorr.c -o Modulized_HIBFSS_Schnorr -lcrypto -lssl
+ * 
+ *Run:              ./Modulized_HIBFSS_Schnorr
+ *
+ *Documentation:    OpenSSL Library
+ *
+ * Created By:      << Saleh Darzi >>
+_______________________________________________________________________________*/
+
+
+//Header Files
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <openssl/ec.h>
+#include <openssl/bn.h>
+#include <openssl/sha.h>
+#include <string.h>
+//#include <linux/time.h>
+
+
+namespace asn1 {
+namespace rrc_nr {
+    
+
+/*************************************************************
+				    F u n c t i o n s
+**************************************************************/
+#define CURVE_NAME 713 // Numeric ID for NID_secp224r1 (ed224 curve)
+
+/*======================================
+   Utility function to print BIGNUMs     
+========================================*/
+void print_bn(const char *label, const BIGNUM *bn);
+/*============================================
+   Function to measure time in nanoseconds
+=============================================*/
+double get_time_ns();
+
+
+/*======================================
+   System Setup Algorithm Function
+========================================*/
+void system_setup(EC_GROUP *curve, EC_POINT **PK0, BIGNUM **sk, BIGNUM *order, BN_CTX *ctx, unsigned char *hash);
+
+
+/*======================================
+        Key Extraction Function
+========================================*/ 
+void key_extract(int k, EC_GROUP *curve, EC_POINT *PK0, BIGNUM *sk, BIGNUM *order, BN_CTX *ctx, EC_POINT ***vec_QIDk, BIGNUM ***vec_hIDk, BIGNUM ***vec_skIDk, unsigned char *hash);
+
+
+
+
+
+/*======================================
+            Signing Function
+========================================*/ 
+void sign_message(unsigned char *message, int message_length, int sign_level, EC_GROUP *curve, EC_POINT **vec_QIDk, BIGNUM **vec_skIDk, BIGNUM *order, BN_CTX *ctx, unsigned char *hash, BIGNUM **zj, EC_POINT **Rj, BIGNUM **hj);
+
+/*======================================
+            Verification Function
+========================================*/ 
+void verify_signature(int sign_level, EC_GROUP *curve, EC_POINT **vec_QIDk, BIGNUM **vec_hIDk, EC_POINT *PK0, BIGNUM *hj, BIGNUM *zj, EC_POINT *Rj, BIGNUM *order, BN_CTX *ctx);
+
+
+
+
+}
+}

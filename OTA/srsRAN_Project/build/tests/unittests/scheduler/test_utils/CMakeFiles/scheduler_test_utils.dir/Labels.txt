@@ -1,0 +1,5 @@
+# Directory labels
+ sched
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/scheduler/test_utils/config_generators.cpp
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/scheduler/test_utils/indication_generators.cpp

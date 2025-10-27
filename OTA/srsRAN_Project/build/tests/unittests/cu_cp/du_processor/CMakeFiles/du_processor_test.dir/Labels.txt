@@ -1,0 +1,5 @@
+# Directory labels
+ cu_cp
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/cu_cp/du_processor/du_configuration_manager_test.cpp
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/cu_cp/du_processor/du_processor_test.cpp

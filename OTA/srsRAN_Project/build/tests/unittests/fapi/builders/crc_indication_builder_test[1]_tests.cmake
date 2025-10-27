@@ -1,0 +1,5 @@
+add_test( crc_indication_builder.valid_indication_passes /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/fapi/builders/crc_indication_builder_test [==[--gtest_filter=crc_indication_builder.valid_indication_passes]==] --gtest_also_run_disabled_tests)
+set_tests_properties( crc_indication_builder.valid_indication_passes PROPERTIES WORKING_DIRECTORY /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/fapi/builders SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test( crc_indication_builder.valid_indication_with_no_metrics_passes /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/fapi/builders/crc_indication_builder_test [==[--gtest_filter=crc_indication_builder.valid_indication_with_no_metrics_passes]==] --gtest_also_run_disabled_tests)
+set_tests_properties( crc_indication_builder.valid_indication_with_no_metrics_passes PROPERTIES WORKING_DIRECTORY /home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/fapi/builders SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set( crc_indication_builder_test_TESTS crc_indication_builder.valid_indication_passes crc_indication_builder.valid_indication_with_no_metrics_passes)

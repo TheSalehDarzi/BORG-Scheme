@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/ran/phy_time_unit_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/ran/phy_time_unit_test[1]_tests.cmake")
+else()
+  add_test(phy_time_unit_test_NOT_BUILT phy_time_unit_test_NOT_BUILT)
+endif()

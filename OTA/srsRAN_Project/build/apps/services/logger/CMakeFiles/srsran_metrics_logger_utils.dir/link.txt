@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrsran_metrics_logger_utils.a CMakeFiles/srsran_metrics_logger_utils.dir/metrics_logger_appconfig_cli11_schema.cpp.o CMakeFiles/srsran_metrics_logger_utils.dir/metrics_logger_appconfig_yaml_writer.cpp.o
+/usr/bin/ranlib libsrsran_metrics_logger_utils.a

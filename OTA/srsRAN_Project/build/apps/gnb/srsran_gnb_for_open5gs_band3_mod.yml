@@ -1,0 +1,60 @@
+# This example configuration outlines how to configure the srsRAN Project gNB to create a single FDD cell
+# transmitting in band 3, with 20 MHz bandwidth and 15 kHz sub-carrier-spacing. A USRP B200 is configured
+# as the RF frontend using split 8, with a Leo Bodnar GPSDO as an external reference clock.
+
+# This particular configuration is intended to be used with srsUE. Note the `pdcch` parameters set in the
+# `cell_cfg` section. These are set to match the capabilities of srsUE.
+
+cu_cp:
+  amf:
+    addr: 10.53.1.2
+    port: 38412
+    bind_addr: 10.53.1.1
+    supported_tracking_areas:
+      - tac: 7
+        plmn_list:
+          - plmn: "00101"
+            tai_slice_support_list:
+              - sst: 1
+
+ru_sdr:
+  device_driver: uhd
+  #device_args: type=b200,num_recv_frames=64,num_send_frames=64, serial=326F407  # Optionally pass arguments to the selected RF driver.
+  device_args: type=b200,num_recv_frames=64,num_send_frames=64, serial=314BCCA  # Optionally pass arguments to the selected RF driver.
+  clock: external                                             
+  # Specify the clock source used by the RF. NOTE: Set to internal if NOT using an external 10 MHz reference clock.
+  srate: 23.04                                                  # RF sample rate might need to be adjusted according to selected bandwidth.
+  otw_format: sc12
+  tx_gain: 80                                                   # Transmit gain of the RF might need to adjusted to the given situation.
+  rx_gain: 40                                                   # Receive gain of the RF might need to adjusted to the given situation.
+
+cell_cfg:
+  dl_arfcn: 368500
+  band: 3
+  channel_bandwidth_MHz: 20
+  common_scs: 15                                                # Subcarrier spacing in kHz used for data.
+  plmn: "00101"                                                 # PLMN broadcasted by the gNB.
+  tac: 7                            # Tracking area code (needs to match the core configuration).
+  pdcch:
+    common:
+      ss0_index: 0                  # Set search space zero index to match srsUE capabilities
+      coreset0_index: 12            # Set search CORESET Zero index to match srsUE capabilities
+    dedicated:
+      ss2_type: common              # Search Space type, has to be set to common
+      dci_format_0_1_and_1_1: false # Set correct DCI format (fallback)
+  prach:
+    prach_config_index: 1           # Sets PRACH config to match what is expected by srsUE
+  pdsch:
+    mcs_table: qam64
+  pusch:
+    mcs_table: qam64
+
+log:
+  filename: ./gnb.log
+  all_level: info
+
+pcap:
+  mac_enable: enable
+  mac_filename: ./gnb_mac.pcap
+  ngap_enable: enable
+  ngap_filename: ./gnb_ngap.pcap

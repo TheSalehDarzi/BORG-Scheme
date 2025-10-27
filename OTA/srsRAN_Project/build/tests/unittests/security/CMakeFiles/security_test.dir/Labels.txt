@@ -1,0 +1,4 @@
+# Directory labels
+ security
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/security/security_test.cpp

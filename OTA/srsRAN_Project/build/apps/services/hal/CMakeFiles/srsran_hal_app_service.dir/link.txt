@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsrsran_hal_app_service.a CMakeFiles/srsran_hal_app_service.dir/hal_cli11_schema.cpp.o
+/usr/bin/ranlib libsrsran_hal_app_service.a

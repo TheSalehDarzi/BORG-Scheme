@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/cu_cp/ue_manager/cu_cp_ue_manager_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/cu_cp/ue_manager/cu_cp_ue_manager_test[1]_tests.cmake")
+else()
+  add_test(cu_cp_ue_manager_test_NOT_BUILT cu_cp_ue_manager_test_NOT_BUILT)
+endif()

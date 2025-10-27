@@ -1,0 +1,4 @@
+# Directory labels
+ e2ap
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/e2/e2_subscription_setup_test.cpp

@@ -1,0 +1,5 @@
+if(EXISTS "/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu/gtpu_tunnel_nru_test[1]_tests.cmake")
+  include("/home/masfiqur/5G_cryptobs/srsRAN_Project/build/tests/unittests/gtpu/gtpu_tunnel_nru_test[1]_tests.cmake")
+else()
+  add_test(gtpu_tunnel_nru_test_NOT_BUILT gtpu_tunnel_nru_test_NOT_BUILT)
+endif()

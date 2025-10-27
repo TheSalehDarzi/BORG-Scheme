@@ -1,0 +1,4 @@
+# Directory labels
+ phy
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/phy/upper/vrb_to_prb_mapper_test.cpp

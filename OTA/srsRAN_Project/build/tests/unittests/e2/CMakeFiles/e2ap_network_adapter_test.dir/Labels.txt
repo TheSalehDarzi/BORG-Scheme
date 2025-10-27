@@ -1,0 +1,5 @@
+# Directory labels
+ e2ap
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/e2/e2ap_network_adapter_test.cpp
+/home/masfiqur/5G_cryptobs/srsRAN_Project/tests/unittests/e2/dummy_ric.cpp

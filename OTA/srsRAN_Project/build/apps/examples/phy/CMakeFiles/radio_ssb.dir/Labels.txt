@@ -1,0 +1,6 @@
+# Directory labels
+ phy
+# Source files and their labels
+/home/masfiqur/5G_cryptobs/srsRAN_Project/apps/examples/phy/radio_ssb.cpp
+/home/masfiqur/5G_cryptobs/srsRAN_Project/apps/examples/phy/lower_phy_example_factory.cpp
+/home/masfiqur/5G_cryptobs/srsRAN_Project/apps/examples/phy/upper_phy_ssb_example.cpp
