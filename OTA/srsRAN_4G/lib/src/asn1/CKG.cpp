@@ -190,14 +190,14 @@ void save_bignum_sp(BIGNUM* bn, const std::string& filename) {
 BIGNUM* load_bignum_sp(const std::string& filename) {
     std::ifstream in(filename, std::ios::binary);
     if (!in.is_open()) return nullptr;
-    printf("yo\n");
+    //printf("BIGNUM Working\n");
     int len;
     in.read(reinterpret_cast<char*>(&len), sizeof(len));
     unsigned char* buffer = new unsigned char[len];
     in.read(reinterpret_cast<char*>(buffer), len);
 
     BIGNUM* bn = BN_bin2bn(buffer, len, nullptr);
-    printf("yo\n");
+    //printf("BIGNUM Working\n");
     delete[] buffer;
     in.close();
     return bn;

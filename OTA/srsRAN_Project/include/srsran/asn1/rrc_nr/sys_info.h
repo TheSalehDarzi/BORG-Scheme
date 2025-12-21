@@ -4544,8 +4544,8 @@ struct sib1_s {
   bool                          non_crit_ext_present            = false;
   //mirza:start
   bool                          sign_dilithium_present               = false;
-  bool                          sign_hibfss_present                  = false;
-  bool                          initialize_hibfss                    = false;
+  bool                          sign_hibfss_present                  = true;
+  bool                          initialize_hibfss                    = sign_hibfss_present;
   bool                          sign_tborg_present                   = false;
   bool                          sign_ecdsa_present                   = false;
   bool                          sign_ec_schnorr_present              = false;

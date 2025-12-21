@@ -20,7 +20,7 @@ cu_cp:
 ru_sdr:
   device_driver: uhd
   #device_args: type=b200,num_recv_frames=64,num_send_frames=64, serial=326F407  # Optionally pass arguments to the selected RF driver.
-  device_args: type=b200,num_recv_frames=64,num_send_frames=64, serial=314BCCA  # Optionally pass arguments to the selected RF driver.
+  device_args: type=b200,num_recv_frames=64,num_send_frames=64, serial=33D704F  # Optionally pass arguments to the selected RF driver.
   clock: external                                             
   # Specify the clock source used by the RF. NOTE: Set to internal if NOT using an external 10 MHz reference clock.
   srate: 23.04                                                  # RF sample rate might need to be adjusted according to selected bandwidth.

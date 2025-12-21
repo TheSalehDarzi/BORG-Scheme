@@ -52,14 +52,14 @@ docker compose up --build 5gc
 (*Assuming user is at project initial directory*)
 ```
 cd srsRAN_Project/build/apps/gnb
-sudo ./gnb -c ./gnb.yaml
+sudo ./gnb -c ./srsran_gnb_for_open5gs_band3_mod.yaml
 ```
 
 - On the same/different computer, start the srsUE: 
 (*Assuming user is at project initial directory*)
 ```
 cd srsRAN_4G/build/srsue
-sudo ./srsue -c ./ue.conf
+sudo ./srsue ./ue_rf.conf
 ```
 
 **Note:** If you are using srsgNB and srsUE on the same computer, make sure the USRP device numbers are properly input in the conf/yaml files.

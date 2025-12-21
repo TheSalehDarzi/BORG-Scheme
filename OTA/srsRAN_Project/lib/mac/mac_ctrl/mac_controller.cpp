@@ -57,9 +57,9 @@ void mac_controller::remove_cell(du_cell_index_t cell_index)
 
 mac_cell_controller& mac_controller::get_cell_controller(du_cell_index_t cell_index)
 {
-  fmt::print("inside controller 2\n");
+  //fmt::print("inside controller 2\n");
   auto& controller = dl_unit.get_cell_controller(cell_index);
-  fmt::print("returning from the inner method");
+  //fmt::print("returning from the inner method");
   return controller;
 }
 

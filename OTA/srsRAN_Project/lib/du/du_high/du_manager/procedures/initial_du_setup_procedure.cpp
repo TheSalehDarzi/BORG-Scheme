@@ -71,7 +71,7 @@ void initial_du_setup_procedure::operator()(coro_context<async_task<void>>& ctx)
 
   // Activate DU Cells.
   params.mac.cell_mng.get_cell_controller(to_du_cell_index(0)).start();
-  fmt::print("Okay upto this\n");
+  //fmt::print("Okay upto this\n");
   //mirza:start
 //   std::thread sib1_rotator_thread([this, du_cfg = cell_mng.get_cell_cfg(to_du_cell_index(0))]() mutable {
 //     std::vector<byte_buffer> sib1_variants;
