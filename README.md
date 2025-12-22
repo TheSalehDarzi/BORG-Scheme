@@ -1,6 +1,6 @@
-# ⚔️ BORG: Transitional Authentication Framework for 5G Networks
+# ⚔️ BORG: Future-Proof Authentication Framework for 5G Networks
 
-> **Hierarchical Identity-Based • Threshold & Fail-Stop • Transitional Post-Quantum Security**
+> **Hierarchical Identity-Based • Threshold & Fail-Stop • Post-Quantum Security**
 
 <p align="center">
   <img src="https://img.shields.io/badge/network-5G%20Authentication-blue?style=for-the-badge" />
@@ -15,7 +15,7 @@
 
 This repository implements and benchmarks the **BORG** framework described in the paper:
 
-> **BORG: Authentication Against Insecure Bootstrapping for 5G Networks — Feasibility, Resiliency, and Transitional Solutions in Post-Quantum Era**  
+> **Future-Proofing Authentication Against Insecure Bootstrapping for 5G Networks: Feasibility,Resiliency, and Accountability**  
 > **Authors:** Saleh Darzi, Mirza Masfiqur Rahman, Imtiaz Karim, Rouzbeh Behnia, Attila Altay Yavuz, Elisa Bertino  
 > **Submitted to:** *IEEE Transactions on Dependable and Secure Computing (TDSC)*  
 > **Contact:** ✉️ salehdarzi@usf.edu · rahman75@purdue.edu · imtiaz.karim@utdallas.edu · behnia@usf.edu · attilaayavuz@usf.edu · bertino@purdue.edu
@@ -26,15 +26,15 @@ This repository implements and benchmarks the **BORG** framework described in th
 
 ## 🧠 Abstract
 
-The 5G protocol lacks a robust base station authentication mechanism during the initial bootstrapping phase, leaving it susceptible to threats such as fake base station attacks. Conventional solutions, including digital signatures based on Public Key Infrastructures (PKIs) and identity-based signatures, are inadequate against quantum-capable adversaries. While integrating NIST’s Post-Quantum Cryptography (PQC) standards is a leading approach for quantum resistance, their suitability for 5G base station authentication remains unexplored. Moreover, current solutions are predominantly centralized and lack security features such as distributed authentication.
-This work presents, to our knowledge, the first comprehensive network-level performance characterization of integrating NISTPQC standards and conventional digital signatures (including threshold and identity-based schemes) into 5G base station authentication. Our findings reveal significant feasibility concerns, with direct PQC adoption hindered by protocol constraints and large signature sizes. We also highlight the performance limitations of conventional methods due to the overhead of certificate chains. To mitigate these challenges, we propose BORG, a transitional authentication solution based on a Hierarchical IdentityBased Threshold Signature scheme with a Fail-Stop property.BORG offers post-mortem post-quantum forgery detection and distributed trust via threshold and compact signatures, wellsuited for 5G’s stringent requirements. Our performance analysis underscores an important warning on the infeasibility of direct PQC integration and positions BORG as an effective transitional solution toward future quantum-resilient 5G authentication.
-> 🧩 BORG achieves distributed trust, forgery accountability, and post-mortem post-quantum forgery detection — all within native 5G constraints.
+The 5G protocol lacks a robust base station authentication mechanism during the initial bootstrapping phase, leaving it susceptible to threats such as fake base station (BS), spoofed broadcasts, and large-scale manipulation of System Information Blocks (SIBs). Despite real-world 5G deployments increasingly relying on multi-BS communication and user multi-connectivity, existing solutions incur high communication overheads, rely on centralized trust, and lack accountability and long-term breach resiliency. Given the inevitability of BS compromise and the severe impact of forged SIBs as the root of trust (e.g., fake alerts, tracking, false roaming), distributed trust, verifiable forgery detection, and audit logging are essential, yet remain largely unexplored in 5G authentication. These challenges are further amplified by the emergence of quantum-capable adversaries. 
+While integration of NIST Post-Quantum Cryptography (PQC) standards is widely viewed as a path toward long-term security and future-proofing 5G authentication, their feasibility under strict packet size, latency, and broadcast constraints has not been systematically studied. This work presents, to our knowledge, the first comprehensive network-level performance characterization of integrating NIST-PQC standards and conventional digital signatures into 5G BS authentication, showing that direct PQC adoption is impractical due to protocol constraints, delays, and large signature sizes.  
+To address these challenges, we propose BORG, a future-proof authentication framework based on a hierarchical identity-based threshold signature with fail-stop properties. BORG distributes trust across multiple BSs, enables post-mortem forgery detection, and provides tamper-evident, post-quantum secure audit logging, while maintaining compact signatures, avoiding fragmentation, and incurring minimal UE overhead, as shown in our real 5G testbed implementation.
 
 ---
 
 ## 🌐 Overview
 
-**BORG** serves as an **intermediate step** toward full PQC migration in 5G networks by providing:
+**BORG** serves as an **intermediate step** toward PQ era in 5G networks by providing:
 
 ✅ **Hierarchical Identity-Based Trust** — eliminates certificate chains  
 ✅ **Threshold Signing (t, n)** — distributed base-station cooperation  
