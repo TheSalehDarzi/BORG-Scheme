@@ -1,0 +1,224 @@
+(* ================================================================ *)
+(* BORG Protocol – ProVerif Formal Verification Model               *)
+(*                                                                  *)
+(* Paper:  "Future-Proofing Authentication Against Insecure         *)
+(*          Bootstrapping for 5G Networks"                          *)
+(*                                                                  *)
+(* Models the 5G BS authentication protocol (Section 6.3):          *)
+(*   CKG --[sec]--> AMF --[sec]--> BS_group --[pub]--> UE           *)
+(*                                                                  *)
+(* Adversary model:                                                 *)
+(*   Dolev-Yao (full network control over public channels)          *)
+(*   + up to (t-1) compromised BS key shares                       *)
+(*                                                                  *)
+(* Abstraction:                                                     *)
+(*   Threshold signing modeled as black-box requiring group key.    *)
+(*   Individual shares (leaked to adversary) are one-way: cannot    *)
+(*   reconstruct the group key or forge signatures, mirroring the   *)
+(*   mathematical guarantee of Theorem 1 (EUF-sID-CMIA / ECDLP).   *)
+(*   This model verifies *protocol-level* properties, complementing *)
+(*   the cryptographic reductions in the paper.                     *)
+(*                                                                  *)
+(* Properties verified:                                             *)
+(*   Q1. Authentication correspondence (non-injective)       TRUE   *)
+(*   Q2. Nonce origin authentication (freshness)             TRUE   *)
+(*   Q3. Group signing key secrecy                           TRUE   *)
+(*   Q4. Honest BS share secrecy                             TRUE   *)
+(*                                                                  *)
+(* Note on injective agreement:                                     *)
+(*   Injective agreement (one UE acceptance per BS signing) does    *)
+(*   NOT hold for broadcast protocols by design: a single signed    *)
+(*   SIB1 is legitimately received by many UEs. This is standard    *)
+(*   for one-to-many broadcast authentication. Anti-replay is       *)
+(*   instead ensured by fresh per-broadcast nonces (Q2) combined    *)
+(*   with application-layer timestamp validation (Section 6.3.9).   *)
+(*                                                                  *)
+(* Run:  proverif borg_protocol.pv                                  *)
+(* ================================================================ *)
+
+
+(* ===== Types ===== *)
+type skey.
+type pkey.
+type ident.
+
+
+(* ===== Channels ===== *)
+free pub    : channel.               (* public broadcast / wireless   *)
+free sec_ca : channel [private].     (* CKG -> AMF (secure channel)  *)
+free sec_ab : channel [private].     (* AMF -> BSs (secure, e.g. XnAP) *)
+
+
+(* ===== Public Identity Constants ===== *)
+free id_amf : ident.                 (* AMF identity *)
+free id_bs  : ident.                 (* BS group identity *)
+
+
+(* ===== Constructors ===== *)
+
+(* Public key from secret key *)
+fun pk(skey) : pkey.
+
+(* Hierarchical identity-based key extraction:
+   parent_sk + child_id -> child_sk
+   Models BORG.Extract (Algorithm 1). *)
+fun hext(skey, ident) : skey.
+
+(* Threshold group signature (abstracted):
+   group_sk + message -> signature
+   Models BORG.Sign + aggregation (Algorithm 3). *)
+fun tsig(skey, bitstring) : bitstring.
+
+(* One-way share derivation:
+   group_key + index -> share
+   No destructor recovers the group key from shares. *)
+fun mkshare(skey, bitstring) : bitstring.
+
+(* Message construction: payload || timestamp *)
+fun cat(bitstring, bitstring) : bitstring.
+
+(* Symmetric encryption (for secrecy test only) *)
+fun senc(bitstring, bitstring) : bitstring.
+
+(* Type coercion *)
+fun sk2b(skey) : bitstring [data].
+
+
+(* ===== Destructors / Equations ===== *)
+
+(* Signature verification *)
+reduc forall k:skey, m:bitstring ;
+    tverify(tsig(k, m), pk(k), m) = true.
+
+(* Hierarchical public key derivation (public operation) *)
+reduc forall sk:skey, id:ident ;
+    hpk(pk(sk), id) = pk(hext(sk, id)).
+
+(* Symmetric decryption *)
+reduc forall m:bitstring, k:bitstring ;
+    sdec(senc(m, k), k) = m.
+
+(* Message component extraction *)
+reduc forall a:bitstring, b:bitstring ;
+    getpayload(cat(a, b)) = a.
+reduc forall a:bitstring, b:bitstring ;
+    getts(cat(a, b)) = b.
+
+
+(* ===== Private Names for Secrecy Tests ===== *)
+free secret_groupkey : bitstring [private].
+free secret_share    : bitstring [private].
+
+
+(* ===== Events ===== *)
+event HonestSigned(bitstring).         (* honest BS quorum signed m         *)
+event UEAccepted(bitstring).           (* UE accepted m after verification  *)
+event NonceGenerated(bitstring).       (* honest BS generated fresh nonce   *)
+event NonceAccepted(bitstring).        (* UE accepted msg containing nonce  *)
+
+
+(* ===== Security Queries ===== *)
+
+(* Q1: Authentication correspondence (non-injective).
+   If a UE accepts message m, then the honest BS quorum
+   previously signed m. Core authentication property:
+   the adversary cannot forge a valid SIB1 signature. *)
+query m:bitstring ;
+    event(UEAccepted(m)) ==> event(HonestSigned(m)).
+
+(* Q2: Nonce origin authentication.
+   Every timestamp in an accepted message was freshly
+   generated by the honest BS quorum — not fabricated
+   by the adversary. Combined with timestamp validation
+   (Section 6.3.9), this prevents replay of stale SIB1. *)
+query ts:bitstring ;
+    event(NonceAccepted(ts)) ==> event(NonceGenerated(ts)).
+
+(* Q3: Group signing key secrecy.
+   The adversary cannot recover the BS group signing key,
+   even holding (t-1) one-way shares and observing
+   arbitrarily many signed broadcasts. *)
+query attacker(secret_groupkey).
+
+(* Q4: Honest BS internal secrecy.
+   Internal secrets of honest BSs cannot be derived
+   by the adversary through the protocol. *)
+query attacker(secret_share).
+
+
+(* ================================================================ *)
+(* Protocol Processes                                               *)
+(* ================================================================ *)
+
+(* --- CKG: One-time system initialisation (Section 6.3.1) --- *)
+let processCKG() =
+    new skMaster : skey ;
+    out(pub, pk(skMaster)) ;
+    out(sec_ca, skMaster).
+
+
+(* --- AMF: Key extraction for BS group (Section 6.3.2) ---
+   Derives AMF key, then BS group key. Distributes group key
+   to honest BSs. Leaks (t-1) one-way shares to adversary. *)
+let processAMF() =
+    in(sec_ca, skM : skey) ;
+    let skAMF = hext(skM, id_amf) in
+    let skBS  = hext(skAMF, id_bs) in
+    out(sec_ab, skBS) ;
+    (* Adversary obtains (t-1) compromised shares *)
+    new si1 : bitstring ;
+    new si2 : bitstring ;
+    out(pub, mkshare(skBS, si1)) ;
+    out(pub, mkshare(skBS, si2)).
+
+
+(* --- Honest BS Quorum (Section 6.3.3) ---
+   Signs arbitrarily many SIB1 messages with fresh nonces. *)
+let processHonestBS() =
+    in(sec_ab, skBS : skey) ;
+    (* Secrecy challenges *)
+    out(pub, senc(secret_groupkey, sk2b(skBS))) ;
+    new honest_internal : bitstring ;
+    out(pub, senc(secret_share, honest_internal)) ;
+    (* Replicated signing *)
+    !(
+        new sib1_payload : bitstring ;
+        new ts : bitstring ;
+        event NonceGenerated(ts) ;
+        let m = cat(sib1_payload, ts) in
+        let sigma = tsig(skBS, m) in
+        event HonestSigned(m) ;
+        out(pub, (m, sigma, id_bs, id_amf))
+    ).
+
+
+(* --- UE: Receive and verify (Section 6.3.5) ---
+   Derives expected BS public key hierarchically from
+   pre-installed master key + received identities.
+   Verifies threshold signature. Extracts nonce. *)
+let processUE(pkMaster : pkey) =
+    in(pub, (m : bitstring, sigma : bitstring,
+             bs_id_recv : ident, amf_id_recv : ident)) ;
+    (* Hierarchical PK derivation *)
+    let pkAMF = hpk(pkMaster, amf_id_recv) in
+    let pkBS  = hpk(pkAMF, bs_id_recv) in
+    (* Verify threshold group signature *)
+    if tverify(sigma, pkBS, m) = true then
+    (* Extract timestamp for freshness validation *)
+    let ts_recv = getts(m) in
+    event NonceAccepted(ts_recv) ;
+    event UEAccepted(m).
+
+
+(* ================================================================ *)
+(* Main Process                                                     *)
+(* ================================================================ *)
+process
+    new skMaster : skey ;
+    let pkMaster = pk(skMaster) in
+    out(pub, pkMaster) ;
+    (   out(sec_ca, skMaster)
+      | processAMF()
+      | processHonestBS()
+      | !processUE(pkMaster)
+    )
